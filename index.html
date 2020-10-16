@@ -122,7 +122,8 @@
                     <a class="nav-link navbar-brand" href="#workMe">work</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link navbar-brand" href="#" data-toggle="modal" data-target="#modalRegister">register</a>
+                    <a class="nav-link navbar-brand" href="#" data-toggle="modal"
+                      data-target="#modalRegister">register</a>
                   </li>
                 </ul>
               </div>
@@ -192,119 +193,121 @@
     <!--end landing-->
 
     <!--Modal Login-->
-    
+
     <!--End Modal Login-->
 
     <!--Modal register start-->
 
-<!-- Modal -->
-<div class="container">
-<div class="row d-flex flex-row justify-content-center align-items-center">
-    <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content col-12 pb-5 rounded">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Register Form</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form class="pb-5" method="POST" action="https://google.com" id="myFormId" onsubmit="return myValidation()" name="myForm">
-              
-              <div class="form-group">
-                <label for="inputUser" class="text-capitalize">username</label>
-                <input type="text" name="inputUser" class="form-control" id="inputUser">
-                <div class="invalid-feedback" id="errorUser"></div>
-                <div class="valid-feedback" id="okUser"></div>
+    <!-- Modal -->
+    <div class="container">
+      <div class="row d-flex flex-row justify-content-center align-items-center">
+        <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content col-12 pb-5 rounded">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Register Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <!--End username-->
-              <!--Password-->
-              <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputPassword" class="text-capitalize">password</label>
-                <input type="password" name="inputPassword"  class="form-control" id="inputPassword">
-                <div class="invalid-feedback" id="errorPassword"></div>
-                <div class="valid-feedback" id="okPassword"></div>
-              </div>
-              <div class="form-group col-6">
-                <label for="repeatPassword" class="text-capitalize">repeat password</label>
-                <input type="password" name="repeatPassword"  class="form-control" id="repeatPassword">
-                <div class="invalid-feedback" id="errorPassword2"></div>
-                <div class="valid-feedback" id="okPassword2"></div>
-              </div>
-              </div>
-              <!--End password-->
-              <!--Mail-->
-              <div class="form-group ">
-                <label for="inputEmail" class="text-capitalize">email</label>
-                <input type="text" name="inputEmail" class="form-control" id="inputEmail">
-                <div class="invalid-feedback" id="errorEmail"></div>
-                <div class="valid-feedback" id="okEmail"></div>
-              </div>
-              <!--End mail-->
-              <!--County-->
-              <div class="form-row">
-              <div class="form-group col-12">
-                <label for="inputProvince" class="text-capitalize">county</label>
-                 <select id="inputProvince" class="form-control">
-                <option selected value=""></option>
-                <option>Barcelona</option>
-                <option>Girona</option>
-                <option>Tarragona</option>
-                <option>Lleida</option>
-                </select>
-                <div class="invalid-feedback" id="errorProvince"></div>
-              </div>
-            </div>
-            <!--End county-->
-            <!--End city-->
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">city</label>
-                 <input type="text" class="form-control" id="inputCity">
-                 <div class="invalid-feedback" id="errorCity"></div>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputZip" class="text-capitalize">zip code</label>
-                <input type="text" class="form-control" id="inputZip">
-                <div class="invalid-feedback" id="errorZip"></div>
-                <div class="valid-feedback" id="okZip"></div>
-              </div>
-            </div>
-            <!--End city-->
+              <div class="modal-body">
+                <form class="pb-5" method="POST" action="https://google.com" id="myFormId"
+                  onsubmit="return myValidation()" name="myForm">
+
+                  <div class="form-group">
+                    <label for="inputUser" class="text-capitalize">username</label>
+                    <input type="text" name="inputUser" class="form-control" id="inputUser">
+                    <div class="invalid-feedback" id="errorUser"></div>
+                    <div class="valid-feedback" id="okUser"></div>
+                  </div>
+                  <!--End username-->
+                  <!--Password-->
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword" class="text-capitalize">password</label>
+                      <input type="password" name="inputPassword" class="form-control" id="inputPassword">
+                      <div class="invalid-feedback" id="errorPassword"></div>
+                      <div class="valid-feedback" id="okPassword"></div>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="repeatPassword" class="text-capitalize">repeat password</label>
+                      <input type="password" name="repeatPassword" class="form-control" id="repeatPassword">
+                      <div class="invalid-feedback" id="errorPassword2"></div>
+                      <div class="valid-feedback" id="okPassword2"></div>
+                    </div>
+                  </div>
+                  <!--End password-->
+                  <!--Mail-->
+                  <div class="form-group ">
+                    <label for="inputEmail" class="text-capitalize">email</label>
+                    <input type="text" name="inputEmail" class="form-control" id="inputEmail">
+                    <div class="invalid-feedback" id="errorEmail"></div>
+                    <div class="valid-feedback" id="okEmail"></div>
+                  </div>
+                  <!--End mail-->
+                  <!--County-->
+                  <div class="form-row">
+                    <div class="form-group col-12">
+                      <label for="inputProvince" class="text-capitalize">county</label>
+                      <select id="inputProvince" class="form-control">
+                        <option selected value=""></option>
+                        <option>Barcelona</option>
+                        <option>Girona</option>
+                        <option>Tarragona</option>
+                        <option>Lleida</option>
+                      </select>
+                      <div class="invalid-feedback" id="errorProvince"></div>
+                    </div>
+                  </div>
+                  <!--End county-->
+                  <!--End city-->
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">city</label>
+                      <input type="text" class="form-control" id="inputCity">
+                      <div class="invalid-feedback" id="errorCity"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputZip" class="text-capitalize">zip code</label>
+                      <input type="text" class="form-control" id="inputZip">
+                      <div class="invalid-feedback" id="errorZip"></div>
+                      <div class="valid-feedback" id="okZip"></div>
+                    </div>
+                  </div>
+                  <!--End city-->
               </div>
               <!--End modal-body-->
               <!--Form-group-->
               <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck" id="labelCheck">
-                <!-- I read and understand the privace policy -->
-                </label>
-                <div class="invalid-feedback" id="errorCheck"></div>
-                <div class="valid-feedback" id="okCheck"></div>
-              </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck" id="labelCheck">
+                    <!-- I read and understand the privace policy -->
+                  </label>
+                  <div class="invalid-feedback" id="errorCheck"></div>
+                  <div class="valid-feedback" id="okCheck"></div>
+                </div>
               </div>
               <!--End form group-->
               <button type="submit" class="btn btn-dark text-light text-capitalize">register</button>
-            </form>
+              </form>
+            </div>
+            <!--End modal-content-->
+            <!--End modal-footer-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            <!--End modal-footer-->
           </div>
-          <!--End modal-content-->
-          <!--End modal-footer-->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-          <!--End modal-footer-->
+          <!--End model-dialoge-->
         </div>
-        <!--End model-dialoge-->
+        <!--End modal-fade-->
       </div>
-      <!--End modal-fade-->
-  </div>
-  <!--End row-->
-</div>
-<!--End container used modal-->
+      <!--End row-->
+    </div>
+    <!--End container used modal-->
   </div>
   <!--end container-->
 
@@ -613,10 +616,10 @@
                     <input
                       class="form-control form-control-lg bg-transparent border-top-0 border-left-0 border-right-0 rounded-0"
                       type="text" name="name" id="name" placeholder="Name">
-                    <div class="row">
-                      <div class=" col-md-12 font-weight-bold text-light" id="status"></div>
-                      <div class=" col-md-12 font-weight-bold text-light valid-tooltip" id="status1">All seems corrwct</div>
-                    </div>
+
+                    <div class="font-weight-bold text-light invalid-feedback" id="status"></div>
+                    <div class="font-weight-bold text-light valid-feedback" id="status1"></div>
+
                   </div>
                 </div>
                 <!--end row-->
@@ -627,10 +630,10 @@
                     <input
                       class="form-control mt-3 form-control-lg bg-transparent border-top-0 border-left-0 border-right-0 rounded-0"
                       type="email" name="mail" id="mail" placeholder="Email">
-                    <div class="row">
-                      <div class=" col-md-12 font-weight-bold text-light" id="status2"></div>
-                      <div class=" col-md-12 font-weight-bold text-light" id="status3"></div>
-                    </div>
+
+                    <div class="font-weight-bold text-light invalid-feedback" id="status2"></div>
+                    <div class="font-weight-bold text-light valid-feedback" id="status3"></div>
+
                   </div>
 
                 </div>
@@ -709,19 +712,21 @@
               <p class="card-text mt-2 mb-4 text-ligth">Resourceful links</p>
             </div>
             <div class="col-sm-12 col-md-6">
-                <!--exercici form validation ismael-->
-          <nav class="navbar navbar-dark bg-transparent text light d-flex flex-row justify-content-center">
-            <form class="form-inline">
-              <input class="form-control mr-sm-2 bg-dark border-top-0 border-left-0" id="mySearch" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-dark text-light my-2 my-sm-0" id="button2" type="submit">Search</button>
-              <div class=" font-weight-bold text-light" id="status4"></div>
-            </form>
-          </nav>
-          <!--End exercici-->
+              <!--exercici form validation ismael-->
+              <nav class="navbar navbar-dark bg-transparent text light d-flex flex-row justify-content-center">
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2 bg-dark border-top-0 border-left-0" id="mySearch" type="search"
+                    placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-dark text-light my-2 my-sm-0" id="button2"
+                    type="submit">Search</button>
+                  <div class="font-weight-bold text-light" id="status4"></div>
+                </form>
+              </nav>
+              <!--End exercici-->
             </div>
           </div>
-          
-        
+
+
           <div class="row d-flex flex-row justify-content-around">
             <div class="col-md-3  mx-auto">
               <h4 class="font-weight-light text-danger">Fonts</h4>

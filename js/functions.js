@@ -145,6 +145,8 @@ function longWord(){
 
     console.log('Search works');
 
+    cleanStatus();
+
     let noWhite = searchField.value.trim();
 
     //length str
@@ -471,40 +473,29 @@ function myValidation() {
     }
 
     //if there is an error ...
-    if (counter > 0){
-        return false;
-    }else{
-		return true;
-	}
+   return returnMe(counter);
       
-}
-  
-//object test
-const typeFields = (nameClass) =>{
-
-    const isInvalid = () => nameClass.classList.add("is-invalid");
-    const isValid = () => nameClass.classList.add("is-valid");
-
-    const casesName = {
-
-        empty : isInvalid,
-        wrong : isInvalid,
-
-        default : () => isValid
-        
-    };
-    return (casesName[nameClass] || casesName.default)(); 
-
 }
 
 //clean me Ismael all of it
 form.addEventListener('blur', (event) => {
 	console.log(event);
 	if(event.target.value!='') event.target.classList.remove('is-invalid');
-    //registerValidate();
 }, true);
 
 //recursive functions
+
+//stop me
+function returnMe(num) {
+
+    console.log('returnMe works');
+
+    if (num > 0){
+        return false;
+    }else{
+		return true;
+	}
+}
 
 //clean fields with id only contact
 const cleanStatus = () => {
@@ -513,6 +504,7 @@ const cleanStatus = () => {
     
     document.getElementById('status').innerHTML = "";
     document.getElementById('status2').innerHTML = "";
+    document.getElementById('mySearch').innerHTML = "";
 }
 
 
@@ -522,20 +514,25 @@ function checkName() {
   //get everything you fool
   let name    = document.getElementById('name').value;  
   let redFlag = document.getElementById('name');
+
   form.classList.remove('is-invalid')
+
 
   //let's check your body
   if (name == "") {
 
     redFlag.classList.add('is-invalid');
-    name = document.getElementById('status').innerHTML =  "Field must have a name you fool!";
+    document.getElementById('status').innerHTML =  "Field must have a name";
+    counter++;
     
     
 
   } else {
-      console.log(name);
+
+      redFlag.classList.remove('is-invalid');
       redFlag.classList.add('is-valid');
-      name;
+      document.getElementById('status1').innerHTML =  "All seems correct";
+      //name;
       
   }
   //return name;
@@ -558,8 +555,8 @@ function checkMail(){
     (mail.value == "") ? fillMail() : isValid = checkValidity(mail.value);
 
 
-    (!isValid) ? myReturn = document.getElementById('status2').innerHTML = "You must type a proper email you fool!" : myReturn = true;
-    (!isValid) ? myReturn = document.getElementById('status2').innerHTML = "You must type a proper email you fool!" : myReturn = true;
+    (!isValid) ? myReturn = document.getElementById('status2').innerHTML = "You must type a proper email!" :
+                 myReturn = document.getElementById('status3').innerHTML = "Everything looks good!";
 
     //red or green!!
     addClasses(isValid);
@@ -588,7 +585,7 @@ function checkValidity(email) {
 function addClasses(truth) {
 
      //add invalid to work
-     if (truth == false){
+     if (!truth ){
 
         mail.classList.add('is-invalid');
      } 
