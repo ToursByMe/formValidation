@@ -1,0 +1,66 @@
+@mixin myLinks {
+li {
+
+    list-style: none;
+    & a{
+        text-decoration: none;
+    }
+}
+}
+
+@mixin myCookies {
+    .modal-dialog{
+        margin-top: 0;
+        max-width: 100%;
+        width: 90vw;
+        //margin: 0 auto;
+    }
+    & .modal-content {
+        width: 90vw;
+        border: none;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }
+
+}
+
+@mixin myPhotoHolder {
+
+    width: 65vw;
+    height: auto;
+}
+
+//style links
+html {
+    scroll-behavior: smooth;
+}
+.nav-main {
+    @include myLinks;
+}
+
+.modal-dialog {
+    @include myCookies;
+}
+
+#photoHolder {
+    @include myPhotoHolder;
+}
+
+.navbar-toggler {
+    border: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+
+}
+.navbar-toggler:focus {
+    background-color: transparent;
+}
+button:focus {
+    outline: transparent;
+}

@@ -1,0 +1,12 @@
+body {
+    letter-spacing: 0.02rem;
+}
+
+.nameHeader p {
+line-height: 1.6;
+ & :nth-child(3){
+     line-height: 0;
+ }
+}
+
+
