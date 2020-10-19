@@ -99,15 +99,23 @@ changeWords();
 const searchField = document.getElementById('mySearch');
 
 //addevent
+searchField.addEventListener('focus', cleanUp);
 searchField.addEventListener('keyup', longWord);
 searchField.addEventListener('keyup', warningUp);
 
+
 //SEARCH Funtions
+function cleanUp(){
+
+    searchField.classList.remove('is-invalid');
+    searchField.classList.remove('is-valid');
+    searchField.value = "";
+}
+
 function longWord(){
 
     console.log('Search works');
-    searchField.classList.remove('is-invalid');
-
+    
     let noWhite = searchField.value.trim();
 
     //length str
