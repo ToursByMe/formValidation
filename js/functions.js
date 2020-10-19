@@ -215,8 +215,6 @@ function myValidation() {
 	cleanStatus();
     //Ismael code revised for green lights
 
-    checkMail();
-
 //Not Only Numbers
     let checkPass = /^[0-9]*$/;
     let nameUser = inputUser.value;
@@ -538,14 +536,22 @@ function checkName() {
 
   form.classList.remove('is-invalid')
 
+  let checkPass = /^[0-9]*$/;
+
+//make boolean for username check number
+let booleanName = true;
+booleanName = checkPass.test(name) ? true : false;
+
+
+
 
   //let's check your body
-  if (name == "") {
+  if (name == "" || booleanName) {
 
     redFlag.classList.add('is-invalid');
     document.getElementById('status').innerHTML =  "Field must have a name";
     
-  } else {
+  }else {
 
       redFlag.classList.remove('is-invalid');
       redFlag.classList.add('is-valid');
@@ -564,6 +570,8 @@ function checkMail(){
     form.classList.remove('is-invalid')
 
     //conditionals
+    let checkPass = /^[0-9]*$/;
+    let nameUser = inputUser.value;
 
 
     if(mail.value == "") {
