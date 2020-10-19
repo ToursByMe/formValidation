@@ -197,16 +197,6 @@ const fieldMail = document.forms["contactFormOne"]["fieldMail"];
 
 //MAIN FUNCTION
 
-//check names global
-/* function checkNames(str) {
-
-    console.log('names global works');
-
-//Not Only Numbers
-let checkPass = /^[0-9]*$/;
-
-} */
-
 function myValidation() {
 
     console.log('validation works');
@@ -542,9 +532,6 @@ function checkName() {
 let booleanName = true;
 booleanName = checkPass.test(name) ? true : false;
 
-
-
-
   //let's check your body
   if (name == "" || booleanName) {
 
@@ -555,11 +542,9 @@ booleanName = checkPass.test(name) ? true : false;
 
       redFlag.classList.remove('is-invalid');
       redFlag.classList.add('is-valid');
-      document.getElementById('status1').innerHTML =  "All seems correct";
-      //name;
-      
+      document.getElementById('status1').innerHTML =  "All seems correct";      
   }
-  //return name;
+  
 }
 
 //check Mail
@@ -570,10 +555,6 @@ function checkMail(){
     form.classList.remove('is-invalid')
 
     //conditionals
-    let checkPass = /^[0-9]*$/;
-    let nameUser = inputUser.value;
-
-
     if(mail.value == "") {
 		mail.classList.add("is-invalid");
 		document.getElementById("status2").textContent = "Field must have a mail";
@@ -614,8 +595,7 @@ function addClasses(truth) {
         mail.classList.add('is-invalid');
      } 
 
-        mail.classList.add('is-valid');
-     
+        mail.classList.add('is-valid');    
 
 }
 //show year
