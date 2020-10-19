@@ -95,50 +95,12 @@ function changeWords() {
 changeWords();
 /*************************Validation exercise****************************************/
 
-//validation form
-
-//getters
-//const form
-const form = document.getElementById('contactFormOne');
-//const mail
-const mail = document.getElementById('mail');
-
-//counter
-let counter = 0;
-
-
-//contact button
-const button1     = document.getElementById('sendButton');
-
-//links to open contact
-const contactLink = document.querySelectorAll('myLinks');
-
-//contact
-const contactForm = document.getElementById('myForm');
-const contactForm1 = document.getElementById('registerForm');
-
-//search
-const button2     = document.getElementById('button2');
+//search form
 const searchField = document.getElementById('mySearch');
 
 //addevent
-button1.addEventListener('click', checkForm);
 searchField.addEventListener('keyup', longWord);
-searchField.addEventListener('keyup', warningUp)
-
-//FORM functions
-function checkForm (){
-
-    //clean
-    cleanStatus();
-
-   //name
-   checkName();
-
-   //mail
-   checkMail();
-
-}
+searchField.addEventListener('keyup', warningUp);
 
 //SEARCH Funtions
 function longWord(){
@@ -164,339 +126,288 @@ function longWord(){
 
 function warningUp(){
     (searchField.value.length <=3) ?
-    search = document.getElementById('status4').innerHTML =  "Field must have more than three words you fool!" :
+    search = document.getElementById('status4').innerHTML =  "Field must have more than three words!" :
     search = document.getElementById('status4').innerHTML =  "" ;
 
 }
 
 //VALIDATION FUNCTION
 document.getElementById("labelCheck").textContent = "You must read and check the policies";
-
-//get info from forms
-
-//ismael
-const inputPassword  = document.forms["myForm"]["inputPassword"];
-const repeatPassword = document.forms["myForm"]["repeatPassword"];
-const inputUser      = document.forms["myForm"]["inputUser"];
-const inputEmail     = document.forms["myForm"]["inputEmail"];
-const inputProvince  = document.forms["myForm"]["inputProvince"];
-const inputCity      = document.forms["myForm"]["inputCity"];
-const inputZip       = document.forms["myForm"]["inputZip"];
-const gridCheck      = document.forms["myForm"]["gridCheck"];
-//llamada a todos los form
-//[cual de ellos][el input implicado]
-	//let inputEmail = document.forms["myForm"]["inputEmail"];
-    //let inputEmail = document.getElementById('inputEmail');
-    //Ismael different way of taking data
     //Documentacion
     //https://www.w3schools.com/jsref/coll_doc_forms.asp
 
-//my own form
-const fieldName = document.forms["contactFormOne"]["fieldName"];
-const fieldMail = document.forms["contactFormOne"]["fieldMail"];
-
 //MAIN FUNCTION
+const form = document.getElementById('myForm');
+//let inputEmail = document.getElementById('inputEmail');
+const inputUser = document.forms["myForm"]["inputUser"];
+const inputPassword = document.forms["myForm"]["inputPassword"];
+const repeatPasswrord = document.forms["myForm"]["repeatPassword"]
+const inputEmail = document.forms["myForm"]["inputEmail"];
+const inputProvince = document.forms["myForm"]["inputProvince"];
+const inputCity = document.forms["myForm"]["inputCity"];
+const inputZip = document.forms["myForm"]["inputZip"];
+const gridCheck = document.forms["myForm"]["gridCheck"];
+
+//contador
+let acumErrores = 0;
+
+
 
 function myValidation() {
+	
+	form.classList.remove('is-invalid');
 
-    console.log('validation works');
+    userName();
+
+    userMail();
+
+    userPass();
+
+    repeatPass();
+
+    userCounty();
+
+    userCity();
+
+    userCode();
     
-    //remove red light traffic
-	cleanStatus();
-    //Ismael code revised for green lights
+    userBox();
+	
+   return formStop(acumErrores);
 
-//Not Only Numbers
-    let checkPass = /^[0-9]*$/;
-    let nameUser = inputUser.value;
-
-//make boolean for username check number
-    let userBool = checkPass.test(nameUser) ? true : false;
-
-    let userObj = {
-        case1 : (nameUser == ""),
-        case2 : userBool
-    }
-    switch (true) {
-
-        case userObj.case1:
-        
-        inputUser.classList.add("is-invalid");
-        
-        document.getElementById("errorUser").textContent = "No empty field allowed";
-        
-        counter ++;
-
-            break;
-    
-        case userObj.case2:
-        
-        inputUser.classList.add("is-invalid");
-        
-        document.getElementById("errorUser").textContent = "Username can't be ONLY numbers";
-        
-        counter ++;
-
-            break;
-    
-        default:
-        
-        inputUser.classList.remove("is-invalid");
-        
-        inputUser.classList.add("is-valid");
-        
-        document.getElementById("okUser").textContent = "Properly done";
-
-            break;
-    }
-
-    //Password
-    let fieldPass = inputPassword.value;
-
-    //not only numbers
-    let bool = (checkPass.test(fieldPass)) ? true : false;
-
-    //switch password
-    let passObj = {
-        case1: (fieldPass == ""),
-        case2: (fieldPass.length <= 6),
-        case3: (bool),
-    }
-    switch (true) {
-
-        case (passObj.case1):
- 
-        inputPassword.classList.add("is-invalid");
-        
-        document.getElementById("errorPassword").textContent = "No empty field allowed";
-        
-        counter ++;
-
-            break;
-    
-        case (passObj.case2):
-
-        inputPassword.classList.add("is-invalid");
-        
-        document.getElementById("errorPassword").textContent = "Password must have more than 6 characters";
-        
-        counter ++;
-
-            break;
-    
-        case (passObj.case3):
-
-        inputPassword.classList.add("is-invalid");
-        
-        document.getElementById("errorPassword").textContent = "Password can't have only numbers";
-        
-        counter ++;
-
-            break;
-    
-        default:
-            
-        inputPassword.classList.remove("is-invalid");
-            
-        inputPassword.classList.add("is-valid");
-            
-        document.getElementById("okPassword").textContent = "Right password format";
-
-            break;
-    }
-
-    //switch repeat Password
-    let repeatPass = repeatPassword.value;
-
-    //objct repeat
-    let repeatObj = {
-        case1 : (repeatPass == ""),
-        case2 : (repeatPass !== fieldPass)
-    }
-
-    switch (true) {
-        case (repeatObj.case1):
-            
-        repeatPassword.classList.add("is-invalid");
-        
-        document.getElementById("errorPassword2").textContent = "No empty field allowed";
-        
-        counter ++;
-            
-            break;
-    
-        case (repeatObj.case2):
-        
-        repeatPassword.classList.add("is-invalid");
-        
-        document.getElementById("errorPassword2").textContent = "Password doesn't match";
-        
-        counter ++;
-            
-            break;
-    
-        default:
-        
-        repeatPassword.classList.remove("is-invalid");
-        
-        repeatPassword.classList.add("is-valid");
-        
-        document.getElementById("okPassword2").textContent = "Passwords match";
-
-            break;
-    }
-
-    //switch mail
-    let mailLine = inputEmail.value;
-
-    //obj mail
-    let mailObj = {
-
-        case1 : (mailLine == ""),
-        case2 : (!checkValidity(mailLine)),
-
-    }
-
-    switch (true) {
-
-        case mailObj.case1:
-              
-        inputEmail.classList.add("is-invalid");
-        
-        document.getElementById("errorEmail").textContent = "No empty field allowed";
-        
-        counter ++;
-            
-            break;
-    
-        case mailObj.case2:
-       
-        inputEmail.classList.add("is-invalid");
-        
-        document.getElementById("errorEmail").textContent = "Not right mail format";
-       
-        counter ++;
-            
-            break;
-    
-        default:
-        
-        inputEmail.classList.remove("is-invalid");
-        
-        inputEmail.classList.add("is-valid");
-        
-        document.getElementById("okEmail").textContent = "Right mail format";
-
-            break;
-    }
-
-    //prueba obj switch
-
-    //Provincies
-    //look up for api
-    if(inputProvince.value == "") {
-		inputProvince.classList.add("is-invalid");
-		document.getElementById("errorProvince").textContent = "Mandatory field";
-		counter ++;
-	} else {
-        
-        inputProvince.classList.remove("is-invalid");
-        inputProvince.classList.add("is-valid");
-		document.getElementById("errorProvince").textContent = "Properly done";
-
-    }
-    
-    //City
-	if(inputCity.value == "") {
-		inputCity.classList.add("is-invalid");
-		document.getElementById("errorCity").textContent = "Mandatory field";
-		counter ++;
-	} else {
-        
-        inputCity.classList.remove("is-invalid");
-        inputCity.classList.add("is-valid");
-		document.getElementById("errorCity").textContent = "Properly done";
-
-    }
-    
-//ZIP CODE
-    let postalCode = inputZip.value;
-
-    let codeObj = {
-
-        case1 : (postalCode == ""),
-        case2 : (postalCode.length != 5)
-    }
-    console.log(postalCode.length);
-    switch (true) {
-
-        case codeObj.case1:
-        
-        inputZip.classList.add("is-invalid");
-        
-        document.getElementById("errorZip").textContent = "Mandatory field";
-        
-        counter ++;
-            
-            break;
-    
-        case codeObj.case2:
-        
-        inputZip.classList.add("is-invalid");
-        
-        document.getElementById("errorZip").textContent = "Zip code number error";
-        
-        counter ++;
-            
-            break;
-    
-        default:
-        
-        inputZip.classList.remove("is-invalid");
-        
-        inputZip.classList.add("is-valid");
-        
-        document.getElementById("okZip").textContent = "Properly done";
-
-            break;
-    }
-    
-    //Privace Policy
-	if(!gridCheck.checked) {
-
-        gridCheck.classList.add("is-valid");
-        document.getElementById("okCheck").textContent = "";
-        
-		gridCheck.classList.add("is-invalid");
-        document.getElementById("errorCheck").textContent = "Accept the policies";
-        document.getElementById("labelCheck").textContent = "You must read and check the policies";
-        counter ++;
-        
-	}else {
-        
-        gridCheck.classList.remove("is-invalid");
-        gridCheck.classList.add("is-valid");
-		document.getElementById("okCheck").textContent = "Policies accepted";
-		document.getElementById("labelCheck").textContent = "I read and understood the policies";
-
-    }
-
-    //if there is an error ...
-   return returnMe(counter);
-      
 }
 
 //clean me Ismael all of it
-form.addEventListener('blur', (event) => {
+form.addEventListener('focus', (event) => {
 	console.log(event);
-	if(event.target.value!='') event.target.classList.remove('is-invalid');
+	if(event.target.value != "") event.target.classList.remove('is-invalid');
+}, true);
+form.addEventListener('keyup', (event) => {
+	if(event.target.value != ""){  
+        event.target.classList.remove('is-invalid');
+        event.target.classList.add('is-valid');
+    }
 }, true);
 
-//recursive functions
+//Username
+function userName(){
+    
+    //boolean
+    let numCheck = noOnlyNum(inputUser.value);
 
-//stop me
-function returnMe(num) {
+      //USERNAME
+      if (inputUser.value == "") {
+    
+        inValid(inputUser);
+        
+        document.getElementById("errorUser").textContent = "No empty fields allowed";
+       
+        acumErrores ++;
 
-    console.log('returnMe works');
+    } else if (numCheck) {
+
+        inValid(inputUser);
+        
+        document.getElementById("errorUser").textContent = "No only numbers allowed";
+       
+        acumErrores ++;
+
+    } else {
+
+        isValid(inputUser);
+        
+        document.getElementById("okUser").textContent = "Properly done";
+
+    }
+}
+
+//MAIL
+function userMail() {
+
+      //MAIL
+	if(inputEmail.value == "") {
+        
+        inValid(inputEmail);
+        
+        document.getElementById("errorEmail").textContent = "No empty fields allowed";
+        
+        acumErrores ++;
+
+    }else if(!validar_email(inputEmail.value)){
+
+        inValid(inputEmail);
+        
+        document.getElementById("errorEmail").textContent = "No right mail format";
+        
+        acumErrores ++;
+
+	} else {
+
+        isValid(inputEmail);
+        
+        document.getElementById("okEmail").textContent = "Properly done";
+
+    }
+
+}
+//validar mail
+function validar_email(email) {
+	var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	return regex.test(email) ? true : false;
+}
+
+//PASSWORD
+function userPass() {
+
+     //PASSWORD
+    //check noonly numbers
+    let mailBoolean = noOnlyNum(inputPassword.value);
+
+    if(inputPassword.value == "") {
+        
+        inValid(inputPassword);
+        
+        document.getElementById("errorPassword").textContent = "No empty fields allowed";
+        
+        acumErrores ++;
+
+    } else if (inputPassword.value.length <= 6) {
+
+        isValid(inputPassword);
+        
+        document.getElementById("errorPassword").textContent = "Password must have more than 6 characters";
+        
+        acumErrores ++;
+
+    } else if(mailBoolean) {
+
+        inValid(inputPassword);
+        
+        document.getElementById("errorPassword").textContent = "Password must have numbers AND letters";
+        
+        acumErrores ++;
+
+    } else {
+
+        isValid(inputPassword);
+            
+        document.getElementById("okPassword").textContent = "Right password format";
+
+    }
+}
+//REPEAT PASSWORD
+function repeatPass(){
+
+    //REPEAT PASS
+    if (repeatPasswrord.value == ""){
+        
+        inValid(repeatPasswrord);
+        
+        document.getElementById("errorPassword2").textContent = "No empty fields allowed";
+        
+        acumErrores ++;
+    } else if (repeatPasswrord.value !== inputPassword.value) {
+
+        inValid(repeatPasswrord);
+        
+        document.getElementById("errorPassword2").textContent = "Password doesn't match";
+        
+        acumErrores ++;
+    } else {
+
+        isValid(repeatPasswrord);
+        
+        document.getElementById("okPassword2").textContent = "Passwords match";
+    }
+}
+
+//COUNTY
+function userCounty(){
+
+    //COUNTY FIELD
+    if(inputProvince.value == "") {
+
+        inValid(inputProvince);
+        
+        document.getElementById("errorProvince").textContent = "No empty fields allowed";
+        
+        acumErrores ++;
+
+    }  else {
+
+        isValid(inputProvince);
+        
+        document.getElementById("okProvince").textContent = "Properly done";
+
+    }
+}
+
+//CITY
+function userCity(){
+
+    //CITY NAME
+	if(inputCity.value == "") {
+
+        inValid(inputCity);
+        
+        document.getElementById("errorCity").textContent = "No empty fields allowed";
+        
+        acumErrores ++;
+
+	} else {
+
+        isValid(inputCity);
+        
+        document.getElementById("okCity").textContent = "Properly done";
+
+    }
+}
+
+//ZIP CODE
+function userCode(){
+
+     //POSTAL CODE
+	if(inputZip.value == "" || inputZip.value.length != 5) {
+        
+        inValid(inputZip);
+        
+        document.getElementById("errorZip").textContent = "No a proper zip code | Empty field";
+        
+        acumErrores ++;
+	} else if( inputZip.value.length == 5){
+
+        isValid(inputZip);
+        
+        document.getElementById("okZip").textContent = "Properly done";
+    }
+}
+
+//Privacy Policy
+function userBox(){
+
+    if(!gridCheck.checked) {
+        
+        
+        inValid(gridCheck);
+        
+        document.getElementById("errorCheck").textContent = "You must accept the privacy policy";
+        
+        document.getElementById("labelCheck").textContent = "You must read the policies";
+        
+        acumErrores ++;
+        
+	} else {
+
+        isValid(gridCheck);
+
+        document.getElementById("okCheck").textContent = "Policies accepted";
+        
+        document.getElementById("labelCheck").textContent = "I read and understood the policies";
+    }
+}
+
+//STOP
+function formStop(num) {
 
     if (num > 0){
         return false;
@@ -504,101 +415,18 @@ function returnMe(num) {
 		return true;
 	}
 }
+//recursive functions
 
-//clean fields with id only contact
-const cleanStatus = () => {
-
-    console.log('clean works')
-    
-    document.getElementById('status').innerHTML = "";
-    document.getElementById('status2').innerHTML = "";
-    document.getElementById('mySearch').innerHTML = "";
-    form.classList.remove('is-invalid');
+//INVALID
+function inValid(field){
+    field.classList.remove("is-valid");
+    field.classList.add("is-invalid");
 }
-
-
-//checkname
-function checkName() {
-    console.log('checkName works');
-  //get everything you fool
-  let name    = document.getElementById('name').value;  
-  let redFlag = document.getElementById('name');
-
-  form.classList.remove('is-invalid')
-
-  let checkPass = /^[0-9]*$/;
-
-//make boolean for username check number
-let booleanName = true;
-booleanName = checkPass.test(name) ? true : false;
-
-  //let's check your body
-  if (name == "" || booleanName) {
-
-    redFlag.classList.add('is-invalid');
-    document.getElementById('status').innerHTML =  "Field must have a name";
-    
-  }else {
-
-      redFlag.classList.remove('is-invalid');
-      redFlag.classList.add('is-valid');
-      document.getElementById('status1').innerHTML =  "All seems correct";      
-  }
-  
+//VALID
+function isValid(field){
+    field.classList.remove("is-invalid");
+    field.classList.add("is-valid");
 }
-
-//check Mail
-function checkMail(){
-
-    console.log('checkMail works');
-
-    form.classList.remove('is-invalid')
-
-    //conditionals
-    if(mail.value == "") {
-		mail.classList.add("is-invalid");
-		document.getElementById("status2").textContent = "Field must have a mail";
-        
-    }else if(!checkValidity(mail.value)){
-		mail.classList.add("is-invalid");
-		document.getElementById("status2").textContent = "Not a right mail format";
-		
-	} else {
-        mail.classList.add("is-valid");
-        document.getElementById("status3").textContent = "All good. Well done";
-    }
-}
-
-//empty mail
-function fillMail() {
-   //add invalid to work
-   mail.classList.add('is-invalid');
-
-   //tell me the true
-   let textMail = document.getElementById('status2').innerHTML = "You must type an email you fool!";
-
-    return textMail;
-}
-function checkValidity(email) {
-
-    let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    
-	return regex.test(email) ? true : false;
-}
-
-//add classes
-function addClasses(truth) {
-
-     //add invalid to work
-     if (truth == false){
-
-        mail.classList.add('is-invalid');
-     } 
-
-        mail.classList.add('is-valid');    
-
-}
-//show year
 function thisYear() {
 
     //get me dear mine
@@ -620,6 +448,12 @@ thisYear();
     document.querySelector('.nav-menu').classList.toggle('show');
  });
 
+ function noOnlyNum(num) {
+      //CHECK NUMBERS IN NAME
+    let noNum = /^[0-9]*$/;
+    //boolean
+    return noNum.test(num) ? true : false;
+ }
 //modal cookies jquery
 //when document ready do ...
 /* $(document).ready(() => {
@@ -627,8 +461,7 @@ thisYear();
 }); */
 
 //jquery target _blank
-$('#contactFormOne').attr('target', '_blank');
-$('#myFormId').attr('target', '_blank');
+$('#myForm').attr('target', '_blank');
 
 //scroll view
 ScrollReveal().reveal('.aboutMe', {delay: 300});
