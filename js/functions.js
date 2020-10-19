@@ -184,21 +184,28 @@ function myValidation() {
 }
 
 //clean me Ismael all of it
-/* if (document.activeElement instanceof HTMLElement)
-    document.activeElement.blur(); */
 
 form.addEventListener('focus', (event) => {
-	console.log(event);
+	console.log('focus works');
     if(event.target.value != ""){
      event.target.classList.remove('is-invalid');
     }
 }, true);
 form.addEventListener('keyup', (event) => {
+    console.log('keyup works');
 	if(event.target.value != ""){  
         event.target.classList.remove('is-invalid');
         event.target.classList.add('is-valid');
     }
 }, true);
+
+/*     form.addEventListener('blur', (event) => {
+        console.log('blur works');
+        if(event.target.value != ""){  
+            event.target.classList.add('is-invalid');
+            event.target.classList.remove('is-valid');
+        }
+    }, true); */
 
 //Username
 function userName(){
@@ -283,6 +290,8 @@ function userPass() {
         acumErrores ++;
 
     } else if (inputPassword.value.length <= 6) {
+
+        onBlur(inputPassword);
 
         inValid(inputPassword);
         
@@ -438,6 +447,8 @@ function isValid(field){
     field.classList.remove("is-invalid");
     field.classList.add("is-valid");
 }
+
+
 function thisYear() {
 
     //get me dear mine
