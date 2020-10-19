@@ -159,11 +159,6 @@ const gridCheck = document.forms["myForm"]["gridCheck"];
 //contador
 let acumErrores = 0;
 
-//addEevents
-inputZip
-
-
-
 function myValidation() {
 	
 	form.classList.remove('is-invalid');
@@ -189,9 +184,14 @@ function myValidation() {
 }
 
 //clean me Ismael all of it
+/* if (document.activeElement instanceof HTMLElement)
+    document.activeElement.blur(); */
+
 form.addEventListener('focus', (event) => {
 	console.log(event);
-	if(event.target.value != "") event.target.classList.remove('is-invalid');
+    if(event.target.value != ""){
+     event.target.classList.remove('is-invalid');
+    }
 }, true);
 form.addEventListener('keyup', (event) => {
 	if(event.target.value != ""){  
@@ -284,7 +284,7 @@ function userPass() {
 
     } else if (inputPassword.value.length <= 6) {
 
-        isValid(inputPassword);
+        inValid(inputPassword);
         
         document.getElementById("errorPassword").textContent = "Password must have more than 6 characters";
         
