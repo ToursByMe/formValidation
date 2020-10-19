@@ -172,31 +172,50 @@ function warningUp(){
 //VALIDATION FUNCTION
 document.getElementById("labelCheck").textContent = "You must read and check the policies";
 
+//get info from forms
+
+//ismael
+const inputPassword  = document.forms["myForm"]["inputPassword"];
+const repeatPassword = document.forms["myForm"]["repeatPassword"];
+const inputUser      = document.forms["myForm"]["inputUser"];
+const inputEmail     = document.forms["myForm"]["inputEmail"];
+const inputProvince  = document.forms["myForm"]["inputProvince"];
+const inputCity      = document.forms["myForm"]["inputCity"];
+const inputZip       = document.forms["myForm"]["inputZip"];
+const gridCheck      = document.forms["myForm"]["gridCheck"];
+//llamada a todos los form
+//[cual de ellos][el input implicado]
+	//let inputEmail = document.forms["myForm"]["inputEmail"];
+    //let inputEmail = document.getElementById('inputEmail');
+    //Ismael different way of taking data
+    //Documentacion
+    //https://www.w3schools.com/jsref/coll_doc_forms.asp
+
+//my own form
+const fieldName = document.forms["contactFormOne"]["fieldName"];
+const fieldMail = document.forms["contactFormOne"]["fieldMail"];
+
+//MAIN FUNCTION
+
+//check names global
+/* function checkNames(str) {
+
+    console.log('names global works');
+
+//Not Only Numbers
+let checkPass = /^[0-9]*$/;
+
+} */
+
 function myValidation() {
 
     console.log('validation works');
     
     //remove red light traffic
-	form.classList.remove('is-invalid');
-	
-	//let inputEmail = document.forms["myForm"]["inputEmail"];
-    let inputEmail = document.getElementById('inputEmail');
-    
-    //Ismael different way of taking data
-    //Documentacion
-    //https://www.w3schools.com/jsref/coll_doc_forms.asp
-
-	let inputPassword = document.forms["myForm"]["inputPassword"];
-	let repeatPassword = document.forms["myForm"]["repeatPassword"];
-	let inputUser = document.forms["myForm"]["inputUser"];
-	let inputProvince = document.forms["myForm"]["inputProvince"];
-	let inputCity = document.forms["myForm"]["inputCity"];
-	let inputZip = document.forms["myForm"]["inputZip"];
-	let gridCheck = document.forms["myForm"]["gridCheck"];
-    //llamada a todos los form
-    //[cual de ellos][el input implicado]
-
+	cleanStatus();
     //Ismael code revised for green lights
+
+    checkMail();
 
 //Not Only Numbers
     let checkPass = /^[0-9]*$/;
@@ -241,6 +260,7 @@ function myValidation() {
 
             break;
     }
+
     //Password
     let fieldPass = inputPassword.value;
 
@@ -505,6 +525,7 @@ const cleanStatus = () => {
     document.getElementById('status').innerHTML = "";
     document.getElementById('status2').innerHTML = "";
     document.getElementById('mySearch').innerHTML = "";
+    form.classList.remove('is-invalid');
 }
 
 
@@ -523,10 +544,7 @@ function checkName() {
 
     redFlag.classList.add('is-invalid');
     document.getElementById('status').innerHTML =  "Field must have a name";
-    counter++;
     
-    
-
   } else {
 
       redFlag.classList.remove('is-invalid');
@@ -540,28 +558,26 @@ function checkName() {
 
 //check Mail
 function checkMail(){
-    //checker
-    let isValid = true;
-
-    //something to return
-    let myReturn;
 
     console.log('checkMail works');
 
-    form.classList.remove('is-invalid');
+    form.classList.remove('is-invalid')
 
     //conditionals
 
-    (mail.value == "") ? fillMail() : isValid = checkValidity(mail.value);
 
-
-    (!isValid) ? myReturn = document.getElementById('status2').innerHTML = "You must type a proper email!" :
-                 myReturn = document.getElementById('status3').innerHTML = "Everything looks good!";
-
-    //red or green!!
-    addClasses(isValid);
-
-    return myReturn;
+    if(mail.value == "") {
+		mail.classList.add("is-invalid");
+		document.getElementById("status2").textContent = "Field must have a mail";
+        
+    }else if(!checkValidity(mail.value)){
+		mail.classList.add("is-invalid");
+		document.getElementById("status2").textContent = "Not a right mail format";
+		
+	} else {
+        mail.classList.add("is-valid");
+        document.getElementById("status3").textContent = "All good. Well done";
+    }
 }
 
 //empty mail
@@ -585,7 +601,7 @@ function checkValidity(email) {
 function addClasses(truth) {
 
      //add invalid to work
-     if (!truth ){
+     if (truth == false){
 
         mail.classList.add('is-invalid');
      } 
