@@ -291,7 +291,6 @@ function userPass() {
 
     } else if (inputPassword.value.length <= 6) {
 
-        onBlur(inputPassword);
 
         inValid(inputPassword);
         
@@ -376,6 +375,8 @@ function userCity(){
 
 	} else {
 
+        inputCity.value = capitalize(inputCity.value);
+
         isValid(inputCity);
         
         document.getElementById("okCity").textContent = "Properly done";
@@ -448,7 +449,9 @@ function isValid(field){
     field.classList.add("is-valid");
 }
 
-
+//Capitalize
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+  
 function thisYear() {
 
     //get me dear mine
