@@ -106,8 +106,7 @@ searchField.addEventListener('keyup', warningUp);
 function longWord(){
 
     console.log('Search works');
-
-    cleanStatus();
+    searchField.classList.remove('is-invalid');
 
     let noWhite = searchField.value.trim();
 
@@ -116,7 +115,7 @@ function longWord(){
         searchField.classList.add('is-invalid');
         console.log(searchField.value.length + " "+ 'invalid');
     } else {
-        searchField.classList.remove('is-invalid')
+        searchField.classList.remove('is-invalid');
         searchField.classList.add('is-valid');
         console.log(searchField.value.length + " "+ 'valid');
 
@@ -125,9 +124,10 @@ function longWord(){
 }
 
 function warningUp(){
+
     (searchField.value.length <=3) ?
-    search = document.getElementById('status4').innerHTML =  "Field must have more than three words!" :
-    search = document.getElementById('status4').innerHTML =  "" ;
+     document.getElementById('status4').innerHTML =  "Field must have more than three words!" :
+     document.getElementById('status4').innerHTML =  "" ;
 
 }
 
@@ -150,6 +150,9 @@ const gridCheck = document.forms["myForm"]["gridCheck"];
 
 //contador
 let acumErrores = 0;
+
+//addEevents
+inputZip
 
 
 
