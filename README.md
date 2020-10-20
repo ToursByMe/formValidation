@@ -12,14 +12,19 @@ Confirmaci&oacute; dels camps dels diverssos formularis de la plana
 
 Confirmaci&oacute; de tots els camps delformulari registre
 
-##### Contact
-
-Confirmaci&oacute; dels camps mail i nom del formulari.
-
 ##### Search
 
 M&eacute;s de tres paraules a la b&uacute;squeda.
 
 
 ##### Conclusions
+
+Treball molt interessant sobre la validaci&oacute; de formularis. 
+
+	is-valid
+	is-invalid
+
+Partici&oacute; de les funcions per la seva reutilitzaci&oacute;
+
+Revisar addEventListener i l'injecci&oacute; de funcions dintre dels par&aacute;metres
 

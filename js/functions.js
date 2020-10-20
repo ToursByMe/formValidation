@@ -187,35 +187,22 @@ function myValidation() {
 }
 
 //clean me Ismael all of it
-
-form.addEventListener('focus', () => {
+form.addEventListener('focus', () => myValidation(), true);
     
     //boolean til the end all is false!!!!!
     //don't you dare to place and else as HAVE to return true
     //https://www.yourhtmlsource.com/javascript/formvalidation.html
 
-    if(myValidation()){
-
-        document.getElementsByClassName("myInvalid").textContent = "";
-    }
-}, true);
-
 //add green lights
-form.addEventListener('keyup', () => {
+form.addEventListener('keyup', () => myValidation());
 
-	if(myValidation()){  
+form.addEventListener('blur', () => myValidation());
 
-       document.getElementsByClassName("myInvalid").textContent = "";
-    }
-}, true);
-
- form.addEventListener('blur', () => {
-     
-     if(myValidation()){  
-
-         document.getElementsByClassName("myInvalid").textContent = "";
-     }
- }, true);
+/**Como Ismael te pidió esta mañana, con el addEvent apuntamos a la función directamente
+ * WARNING
+ * form.addEventListener('keyup', myValidation()); NO FUNCIONA
+ * PREGUNTAR A ISMAEL
+  */
 
 //Username
 function userName(){
