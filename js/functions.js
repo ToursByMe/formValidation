@@ -144,38 +144,25 @@ document.getElementById("labelCheck").textContent = "You must read and check the
     //Documentacion
     //https://www.w3schools.com/jsref/coll_doc_forms.asp
 
-//MAIN FUNCTION
-
-//let inputEmail = document.getElementById('inputEmail');
-const form = document.getElementById('myForm');
-const inputUser = document.forms["myForm"]["inputUser"];
-const inputPassword = document.forms["myForm"]["inputPassword"];
-const repeatPasswrord = document.forms["myForm"]["repeatPassword"]
-const inputEmail = document.forms["myForm"]["inputEmail"];
-const inputProvince = document.forms["myForm"]["inputProvince"];
-const inputCity = document.forms["myForm"]["inputCity"];
-const inputZip = document.forms["myForm"]["inputZip"];
-const gridCheck = document.forms["myForm"]["gridCheck"];
-
 //contador
 let acumErrores = 0;
 
-//addEvents
-inputUser.addEventListener('focus', greenUser);
-inputUser.addEventListener('keyup', greenUser1);
-inputUser.addEventListener('blur', greenUser2);
-inputPassword.addEventListener('focus', greenPass);
-inputPassword.addEventListener('keyup', greenPass1);
-inputPassword.addEventListener('blur', greenPass2);
-repeatPasswrord.addEventListener('keyup', greenRepeat);
-inputEmail.addEventListener('keyup', greenMail);
-inputProvince.addEventListener('keyup', greenCounty);
-inputCity.addEventListener('keyup', greenCity);
-inputZip.addEventListener('keyup', greenZip);
+//declaration of form
+const form = document.getElementById('myForm');
+
+//to be used by all functions
+let inputUser = document.forms["myForm"]["inputUser"];
+let inputPassword = document.forms["myForm"]["inputPassword"];
+let repeatPasswrord = document.forms["myForm"]["repeatPassword"]
+let inputEmail = document.forms["myForm"]["inputEmail"];
+let inputProvince = document.forms["myForm"]["inputProvince"];
+let inputCity = document.forms["myForm"]["inputCity"];
+let inputZip = document.forms["myForm"]["inputZip"];
+let gridCheck = document.forms["myForm"]["gridCheck"];
 
 //main function
 function myValidation() {
-	
+
 	form.classList.remove('is-invalid');
 
     userName();
@@ -203,89 +190,27 @@ function myValidation() {
 form.addEventListener('focus', (event) => {
 	console.log('focus works');
     if(event.target.value != ""){
-     event.target.classList.remove('is-invalid');
+        event.target.classList.remove('is-invalid');
     }
 }, true);
+//form.addEventListener("focus", () => form.classList.add('focused'), true);
 
 //add green lights
-/* form.addEventListener('keyup', (event) => {
+form.addEventListener('keyup', (event) => {
     console.log('keyup works');
 	if(event.target.value != ""){  
         event.target.classList.remove('is-invalid');
-       // event.target.classList.add('is-valid');
+       event.target.classList.add('is-valid');
     }
-}, true); */
-function greenUser() {
-    console.log('focus user works');
-    //boolean
-    let numCheck = noOnlyNum(inputUser.value);
+}, true);
 
-    if(inputUser.value == "")  inValid(inputUser);
-    if((inputUser.value != "") && (!numCheck))  isValid(inputUser);
-    
-}
-function greenUser1() {
-    console.log('keyup user works');
-    //boolean
-    let numCheck = noOnlyNum(inputUser.value);
-
-    if(inputUser.value == "")  inValid(inputUser);
-    if((inputUser.value != "") && (!numCheck))  isValid(inputUser);
-    
-}
-function greenUser2() {
-    console.log('blur user works');
-    //boolean
-    let numCheck = noOnlyNum(inputUser.value);
-
-    if(inputUser.value == "")  inValid(inputUser);
-    if((inputUser.value != "") && (!numCheck))  isValid(inputUser);
-    
-}
-function greenPass() {
-    console.log('focus pass works');
-    let numCheck = noOnlyNum(inputPassword.value);
-
-    if(inputPassword.value == "")  inValid(inputPassword);
-    if((inputPassword.value != "") && (!numCheck))  isValid(inputPassword);
-}
-function greenPass1() {
-    console.log('keyup pass works');
-    let numCheck = noOnlyNum(inputPassword.value);
-
-    if(inputPassword.value == "")  inValid(inputPassword);
-    if((inputPassword.value != "") && (!numCheck))  isValid(inputPassword);
-}
-function greenPass2() {
-    console.log('blur pass works');
-    let numCheck = noOnlyNum(inputPassword.value);
-
-    if(inputPassword.value == "")  inValid(inputPassword);
-    if((inputPassword.value != "") && (numCheck))  isValid(inputPassword);
-}
-function greenRepeat() {
-    console.log('keyup repeat works');
-}
-function greenMail() {
-    console.log('keyup mail works');
-}
-function greenCounty() {
-    console.log('keyup county works');
-}
-function greenCity() {
-    console.log('keyup city works');
-}
-function greenZip() {
-    console.log('keyup code works');
-}
-
-/*     form.addEventListener('blur', (event) => {
+    form.addEventListener('blur', (event) => {
         console.log('blur works');
         if(event.target.value != ""){  
             event.target.classList.add('is-invalid');
             event.target.classList.remove('is-valid');
         }
-    }, true); */
+    }, true);
 
 //Username
 function userName(){
