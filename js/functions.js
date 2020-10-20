@@ -163,7 +163,8 @@ let gridCheck = document.forms["myForm"]["gridCheck"];
 //main function
 function myValidation() {
 
-	form.classList.remove('is-invalid');
+    form.classList.remove('is-invalid');
+    
 
     userName();
 
@@ -187,30 +188,34 @@ function myValidation() {
 
 //clean me Ismael all of it
 
-form.addEventListener('focus', (event) => {
-	console.log('focus works');
-    if(event.target.value != ""){
-        event.target.classList.remove('is-invalid');
+form.addEventListener('focus', () => {
+    
+    //boolean til the end all is false!!!!!
+    //don't you dare to place and else as HAVE to return true
+    //https://www.yourhtmlsource.com/javascript/formvalidation.html
+
+    if(myValidation()){
+
+        document.getElementsByClassName("myInvalid").textContent = "";
     }
 }, true);
-//form.addEventListener("focus", () => form.classList.add('focused'), true);
 
 //add green lights
-form.addEventListener('keyup', (event) => {
-    console.log('keyup works');
-	if(event.target.value != ""){  
-        event.target.classList.remove('is-invalid');
-       event.target.classList.add('is-valid');
+form.addEventListener('keyup', () => {
+
+	if(myValidation()){  
+
+       document.getElementsByClassName("myInvalid").textContent = "";
     }
 }, true);
 
-    form.addEventListener('blur', (event) => {
-        console.log('blur works');
-        if(event.target.value != ""){  
-            event.target.classList.add('is-invalid');
-            event.target.classList.remove('is-valid');
-        }
-    }, true);
+ form.addEventListener('blur', () => {
+     
+     if(myValidation()){  
+
+         document.getElementsByClassName("myInvalid").textContent = "";
+     }
+ }, true);
 
 //Username
 function userName(){
