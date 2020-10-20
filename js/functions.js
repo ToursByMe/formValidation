@@ -145,8 +145,9 @@ document.getElementById("labelCheck").textContent = "You must read and check the
     //https://www.w3schools.com/jsref/coll_doc_forms.asp
 
 //MAIN FUNCTION
-const form = document.getElementById('myForm');
+
 //let inputEmail = document.getElementById('inputEmail');
+const form = document.getElementById('myForm');
 const inputUser = document.forms["myForm"]["inputUser"];
 const inputPassword = document.forms["myForm"]["inputPassword"];
 const repeatPasswrord = document.forms["myForm"]["repeatPassword"]
@@ -159,6 +160,18 @@ const gridCheck = document.forms["myForm"]["gridCheck"];
 //contador
 let acumErrores = 0;
 
+//addEvents
+inputUser.addEventListener('focus', greenUser);
+inputUser.addEventListener('keyup', greenUser1);
+inputUser.addEventListener('blur', greenUser2);
+inputPassword.addEventListener('keyup', greenPass);
+repeatPasswrord.addEventListener('keyup', greenRepeat);
+inputEmail.addEventListener('keyup', greenMail);
+inputProvince.addEventListener('keyup', greenCounty);
+inputCity.addEventListener('keyup', greenCity);
+inputZip.addEventListener('keyup', greenZip);
+
+//main function
 function myValidation() {
 	
 	form.classList.remove('is-invalid');
@@ -191,13 +204,60 @@ form.addEventListener('focus', (event) => {
      event.target.classList.remove('is-invalid');
     }
 }, true);
-form.addEventListener('keyup', (event) => {
+
+//add green lights
+/* form.addEventListener('keyup', (event) => {
     console.log('keyup works');
 	if(event.target.value != ""){  
         event.target.classList.remove('is-invalid');
-        event.target.classList.add('is-valid');
+       // event.target.classList.add('is-valid');
     }
-}, true);
+}, true); */
+function greenUser() {
+    console.log('focus user works');
+    //boolean
+    let numCheck = noOnlyNum(inputUser.value);
+
+    if(inputUser.value == "")  inValid(inputUser);
+    if((inputUser.value != "") && (!numCheck))  isValid(inputUser);
+    
+}
+function greenUser1() {
+    console.log('keyup user works');
+    //boolean
+    let numCheck = noOnlyNum(inputUser.value);
+
+    if(inputUser.value == "")  inValid(inputUser);
+    if((inputUser.value != "") && (!numCheck))  isValid(inputUser);
+    
+}
+function greenUser2() {
+    console.log('blur user works');
+    //boolean
+    let numCheck = noOnlyNum(inputUser.value);
+
+    if(inputUser.value == "")  inValid(inputUser);
+    if((inputUser.value != "") && (!numCheck))  isValid(inputUser);
+    
+}
+function greenPass() {
+    console.log('keyup pass works');
+}
+function greenRepeat() {
+    console.log('keyup repeat works');
+}
+function greenMail() {
+    console.log('keyup mail works');
+}
+function greenCounty() {
+    console.log('keyup county works');
+}
+function greenCity() {
+    console.log('keyup city works');
+}
+function greenZip() {
+    console.log('keyup code works');
+}
 
 /*     form.addEventListener('blur', (event) => {
         console.log('blur works');
@@ -291,7 +351,6 @@ function userPass() {
 
     } else if (inputPassword.value.length <= 6) {
 
-
         inValid(inputPassword);
         
         document.getElementById("errorPassword").textContent = "Password must have more than 6 characters";
@@ -364,6 +423,9 @@ function userCounty(){
 //CITY
 function userCity(){
 
+    //check not only number
+    let noNumber = noOnlyNum(inputCity.value);
+
     //CITY NAME
 	if(inputCity.value == "") {
 
@@ -373,7 +435,15 @@ function userCity(){
         
         acumErrores ++;
 
-	} else {
+    } else if(noNumber){
+
+        inValid(inputCity);
+        
+        document.getElementById("errorCity").textContent = "There no such city";
+        
+        acumErrores ++;
+
+    } else {
 
         inputCity.value = capitalize(inputCity.value);
 
@@ -387,6 +457,9 @@ function userCity(){
 //ZIP CODE
 function userCode(){
 
+     //check not only number
+     let noNumber = noOnlyNum(inputZip.value);
+
      //POSTAL CODE
 	if(inputZip.value == "" || inputZip.value.length != 5) {
         
@@ -395,7 +468,16 @@ function userCode(){
         document.getElementById("errorZip").textContent = "No a proper zip code | Empty field";
         
         acumErrores ++;
-	} else if( inputZip.value.length == 5){
+
+	} else if(!noNumber){
+
+        inValid(inputZip);
+        
+        document.getElementById("errorZip").textContent = "Code must be a number";
+
+        acumErrores ++;
+
+    } else if( inputZip.value.length == 5) {
 
         isValid(inputZip);
         
