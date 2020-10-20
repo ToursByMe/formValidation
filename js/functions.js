@@ -164,7 +164,9 @@ let acumErrores = 0;
 inputUser.addEventListener('focus', greenUser);
 inputUser.addEventListener('keyup', greenUser1);
 inputUser.addEventListener('blur', greenUser2);
-inputPassword.addEventListener('keyup', greenPass);
+inputPassword.addEventListener('focus', greenPass);
+inputPassword.addEventListener('keyup', greenPass1);
+inputPassword.addEventListener('blur', greenPass2);
 repeatPasswrord.addEventListener('keyup', greenRepeat);
 inputEmail.addEventListener('keyup', greenMail);
 inputProvince.addEventListener('keyup', greenCounty);
@@ -241,7 +243,25 @@ function greenUser2() {
     
 }
 function greenPass() {
+    console.log('focus pass works');
+    let numCheck = noOnlyNum(inputPassword.value);
+
+    if(inputPassword.value == "")  inValid(inputPassword);
+    if((inputPassword.value != "") && (!numCheck))  isValid(inputPassword);
+}
+function greenPass1() {
     console.log('keyup pass works');
+    let numCheck = noOnlyNum(inputPassword.value);
+
+    if(inputPassword.value == "")  inValid(inputPassword);
+    if((inputPassword.value != "") && (!numCheck))  isValid(inputPassword);
+}
+function greenPass2() {
+    console.log('blur pass works');
+    let numCheck = noOnlyNum(inputPassword.value);
+
+    if(inputPassword.value == "")  inValid(inputPassword);
+    if((inputPassword.value != "") && (numCheck))  isValid(inputPassword);
 }
 function greenRepeat() {
     console.log('keyup repeat works');
