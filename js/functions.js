@@ -528,7 +528,18 @@ ScrollReveal().reveal('.works', {delay: 300});
 ScrollReveal().reveal('.myFooter', {delay: 300});
 
 
-/**************************************************** */
+/***************************DOCUMENTACIÓN************************* */
+//FOCUS/BLUR
+//https://javascript.info/focus-blur
+//https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/blur
+
+//a revisar
+//https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity
+
+
+
+
+
 
 
 
