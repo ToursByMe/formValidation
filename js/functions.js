@@ -150,7 +150,12 @@ let acumErrores = 0;
 //declaration of form
 const form = document.getElementById('myForm');
 
-//to be used by all functions
+//main function
+function myValidation() {
+
+    form.classList.remove('is-invalid');
+
+    //to be used by all functions
 let inputUser = document.forms["myForm"]["inputUser"];
 let inputPassword = document.forms["myForm"]["inputPassword"];
 let repeatPasswrord = document.forms["myForm"]["repeatPassword"]
@@ -159,87 +164,37 @@ let inputProvince = document.forms["myForm"]["inputProvince"];
 let inputCity = document.forms["myForm"]["inputCity"];
 let inputZip = document.forms["myForm"]["inputZip"];
 let gridCheck = document.forms["myForm"]["gridCheck"];
-
-//main function
-function myValidation() {
-
-    form.classList.remove('is-invalid');
     
+//USERNAME
+ //boolean
+ let numCheck = noOnlyNum(inputUser.value);
 
-    userName();
+ //USERNAME
+ if (inputUser.value == "") {
 
-    userMail();
+   inValid(inputUser);
+   
+   document.getElementById("errorUser").textContent = "No empty fields allowed";
+  
+   acumErrores ++;
 
-    userPass();
+} else if (numCheck) {
 
-    repeatPass();
+   inValid(inputUser);
+   
+   document.getElementById("errorUser").textContent = "No only numbers allowed";
+  
+   acumErrores ++;
 
-    userCounty();
+} else {
 
-    userCity();
-
-    userCode();
-    
-    userBox();
-	
-   return formStop(acumErrores);
+   isValid(inputUser);
+   
+   document.getElementById("okUser").textContent = "Properly done";
 
 }
 
-//clean me Ismael all of it
-form.addEventListener('focus', () => myValidation(), true);
-    
-    //boolean til the end all is false!!!!!
-    //don't you dare to place and else as HAVE to return true
-    //https://www.yourhtmlsource.com/javascript/formvalidation.html
-
-//add green lights
-form.addEventListener('keyup', () => myValidation());
-
-form.addEventListener('blur', () => myValidation());
-
-/**Como Ismael te pidió esta mañana, con el addEvent apuntamos a la función directamente
- * WARNING
- * form.addEventListener('keyup', myValidation()); NO FUNCIONA
- * PREGUNTAR A ISMAEL
-  */
-
-//Username
-function userName(){
-    
-    //boolean
-    let numCheck = noOnlyNum(inputUser.value);
-
-      //USERNAME
-      if (inputUser.value == "") {
-    
-        inValid(inputUser);
-        
-        document.getElementById("errorUser").textContent = "No empty fields allowed";
-       
-        acumErrores ++;
-
-    } else if (numCheck) {
-
-        inValid(inputUser);
-        
-        document.getElementById("errorUser").textContent = "No only numbers allowed";
-       
-        acumErrores ++;
-
-    } else {
-
-        isValid(inputUser);
-        
-        document.getElementById("okUser").textContent = "Properly done";
-
-    }
-}
-
-//MAIL
-function userMail() {
-
-      //MAIL
+    //MAIL
 	if(inputEmail.value == "") {
         
         inValid(inputEmail);
@@ -264,17 +219,7 @@ function userMail() {
 
     }
 
-}
-//validar mail
-function validar_email(email) {
-	var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	return regex.test(email) ? true : false;
-}
-
-//PASSWORD
-function userPass() {
-
-     //PASSWORD
+         //PASSWORD
     //check noonly numbers
     let mailBoolean = noOnlyNum(inputPassword.value);
 
@@ -309,12 +254,9 @@ function userPass() {
         document.getElementById("okPassword").textContent = "Right password format";
 
     }
-}
-//REPEAT PASSWORD
-function repeatPass(){
 
-    //REPEAT PASS
-    if (repeatPasswrord.value == ""){
+      //REPEAT PASS
+      if (repeatPasswrord.value == ""){
         
         inValid(repeatPasswrord);
         
@@ -334,11 +276,8 @@ function repeatPass(){
         
         document.getElementById("okPassword2").textContent = "Passwords match";
     }
-}
 
-//COUNTY
-function userCounty(){
-
+    
     //COUNTY FIELD
     if(inputProvince.value == "") {
 
@@ -355,47 +294,40 @@ function userCounty(){
         document.getElementById("okProvince").textContent = "Properly done";
 
     }
-}
 
-//CITY
-function userCity(){
+        //check not only number
+        let noNumber = noOnlyNum(inputCity.value);
 
-    //check not only number
-    let noNumber = noOnlyNum(inputCity.value);
+        //CITY NAME
+        if(inputCity.value == "") {
+    
+            inValid(inputCity);
+            
+            document.getElementById("errorCity").textContent = "No empty fields allowed";
+            
+            acumErrores ++;
+    
+        } else if(noNumber){
+    
+            inValid(inputCity);
+            
+            document.getElementById("errorCity").textContent = "There no such city";
+            
+            acumErrores ++;
+    
+        } else {
+    
+            inputCity.value = capitalize(inputCity.value);
+    
+            isValid(inputCity);
+            
+            document.getElementById("okCity").textContent = "Properly done";
+    
+        }
 
-    //CITY NAME
-	if(inputCity.value == "") {
-
-        inValid(inputCity);
         
-        document.getElementById("errorCity").textContent = "No empty fields allowed";
-        
-        acumErrores ++;
-
-    } else if(noNumber){
-
-        inValid(inputCity);
-        
-        document.getElementById("errorCity").textContent = "There no such city";
-        
-        acumErrores ++;
-
-    } else {
-
-        inputCity.value = capitalize(inputCity.value);
-
-        isValid(inputCity);
-        
-        document.getElementById("okCity").textContent = "Properly done";
-
-    }
-}
-
-//ZIP CODE
-function userCode(){
-
      //check not only number
-     let noNumber = noOnlyNum(inputZip.value);
+    noNumber = noOnlyNum(inputZip.value);
 
      //POSTAL CODE
 	if(inputZip.value == "" || inputZip.value.length != 5) {
@@ -420,11 +352,7 @@ function userCode(){
         
         document.getElementById("okZip").textContent = "Properly done";
     }
-}
-
-//Privacy Policy
-function userBox(){
-
+//tick box
     if(!gridCheck.checked) {
         
         
@@ -444,18 +372,42 @@ function userBox(){
         
         document.getElementById("labelCheck").textContent = "I read and understood the policies";
     }
-}
 
-//STOP
-function formStop(num) {
-
-    if (num > 0){
+    //STOP
+    
+    if (acumErrores > 0){
         return false;
     }else{
 		return true;
 	}
+
+
 }
+
+//clean me Ismael all of it
+form.addEventListener('focus', () => myValidation(), true);
+    
+    //boolean til the end all is false!!!!!
+    //don't you dare to place and else as HAVE to return true
+    //https://www.yourhtmlsource.com/javascript/formvalidation.html
+
+//add green lights
+form.addEventListener('keyup', () => myValidation(), true);
+
+form.addEventListener('blur', () => myValidation(), true);
+
+/**Como Ismael te pidió esta mañana, con el addEvent apuntamos a la función directamente
+ * WARNING
+ * form.addEventListener('keyup', myValidation()); NO FUNCIONA
+ * PREGUNTAR A ISMAEL
+  */
+
 //recursive functions
+//validar mail
+function validar_email(email) {
+	var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	return regex.test(email) ? true : false;
+}
 
 //INVALID
 function inValid(field){
