@@ -372,7 +372,6 @@ let gridCheck = document.forms["myForm"]["gridCheck"];
         
         document.getElementById("labelCheck").textContent = "I read and understood the policies";
     }
-
     //STOP
     
     if (acumErrores > 0){
@@ -386,22 +385,23 @@ let gridCheck = document.forms["myForm"]["gridCheck"];
 
 //clean me Ismael all of it
 //form.addEventListener('focus', () => myValidation(), true);
-    
-    //boolean til the end all is false!!!!!
-    //don't you dare to place and else as HAVE to return true
-    //https://www.yourhtmlsource.com/javascript/formvalidation.html
-    
 
 //add green lights
 form.addEventListener('keyup', () => myValidation(), true);
 
 //form.addEventListener('blur', () => myValidation(), true);
-
-/*Como Ismael te pidió esta mañana, con el addEvent apuntamos a la función directamente
- * WARNING
- * form.addEventListener('keyup', myValidation()); NO FUNCIONA
- * PREGUNTAR A ISMAEL
- */
+  
+//boolean til the end all is false!!!!!
+//don't you dare to place and else as HAVE to return true
+//https://www.yourhtmlsource.com/javascript/formvalidation.html
+ 
+//getting into each field
+let inputFields = document.querySelectorAll(".form-control");
+inputFields.forEach((input_item) =>{
+    input_item.addEventListener("input", ()=>{
+        console.log(input_item.value);
+    });
+});
 
 //recursive functions
 //validar mail
