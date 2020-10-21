@@ -385,22 +385,23 @@ let gridCheck = document.forms["myForm"]["gridCheck"];
 }
 
 //clean me Ismael all of it
-form.addEventListener('focus', () => myValidation(), true);
+//form.addEventListener('focus', () => myValidation(), true);
     
     //boolean til the end all is false!!!!!
     //don't you dare to place and else as HAVE to return true
     //https://www.yourhtmlsource.com/javascript/formvalidation.html
+    
 
 //add green lights
 form.addEventListener('keyup', () => myValidation(), true);
 
-form.addEventListener('blur', () => myValidation(), true);
+//form.addEventListener('blur', () => myValidation(), true);
 
-/**Como Ismael te pidió esta mañana, con el addEvent apuntamos a la función directamente
+/*Como Ismael te pidió esta mañana, con el addEvent apuntamos a la función directamente
  * WARNING
  * form.addEventListener('keyup', myValidation()); NO FUNCIONA
  * PREGUNTAR A ISMAEL
-  */
+ */
 
 //recursive functions
 //validar mail
